@@ -1,10 +1,7 @@
 const FS = require('fs');
 
 
-let input = FS.readFileSync("input.txt", "utf8").split(",");
-
-//test
-//let input = [1,0,0,0,99]
+let input = FS.readFileSync("input-1.txt", "utf8").split(",");
 
 
 for (let i = 0; i < input.length; i += 4) {
