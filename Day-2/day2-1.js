@@ -23,7 +23,6 @@ for (let i = 0; i < input.length; i += 4) {
             console.log(`Value at postion 0: ${input[0]}`);
             return;
             break;
-
         default:
             break;
     }

@@ -12,7 +12,6 @@ for (let i = 0; i < input.length; i += 4) {
     let input2 = parseInt(input[input[i + 2]]);
     let outputIndex = input[i + 3]
 
-
     switch (command) {
         case 1:
             console.log(`adding noun:${input1}  verb:${input2} outputIndex:${outputIndex}`);
@@ -26,7 +25,6 @@ for (let i = 0; i < input.length; i += 4) {
             console.log(`Value at postion 0: ${input[0]}`);
             return;
             break;
-
         default:
             break;
     }
