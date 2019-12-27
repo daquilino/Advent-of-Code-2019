@@ -1,7 +1,7 @@
 const FS = require('fs');
 
 // read intcode from file, split into array, parseInt array using map
-let input = FS.readFileSync("input-1.txt", "utf8").split(",").map(num => parseInt(num));
+let input = FS.readFileSync("input-part1.txt", "utf8").split(",").map(num => parseInt(num));
 
 
 
