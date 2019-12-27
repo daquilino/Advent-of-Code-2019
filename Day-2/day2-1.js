@@ -1,16 +1,14 @@
 const FS = require('fs');
 
-
-let input = FS.readFileSync("input-1.txt", "utf8").split(",");
-
+// read intcode from file, split into array, parseInt array using map
+let input = FS.readFileSync("input-1.txt", "utf8").split(",").map(num=>parseInt(num));
 
 for (let i = 0; i < input.length; i += 4) {
 
-    let command = parseInt(input[i]);
-    let input1 = parseInt(input[input[i + 1]]);
-    let input2 = parseInt(input[input[i + 2]]);
+    let command = input[i];
+    let input1 = input[input[i + 1]];
+    let input2 = input[input[i + 2]];
     let outputIndex = input[i + 3]
-
 
     switch (command) {
         case 1:
