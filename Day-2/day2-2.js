@@ -1,18 +1,17 @@
 const FS = require('fs');
 
 // read intcode from file, split into array, parseInt array using map
-let input = FS.readFileSync("input-1.txt", "utf8").split(",").map(num => parseInt(num));
+let input = FS.readFileSync("input-part2.txt", "utf8").split(",").map(num => parseInt(num));
 
 
 function runIntCode(input, noun, verb) {
 
+    //this makes a copy of input, so we are not modifying the original input array by reference. 
+    input = [...input];
+
     // noun and verb parameter are assigned to respective positions in input intcode array.
     input[1] = noun;
     input[2] = verb;
-    console.log("n", noun, "v", verb);
-
-    let [a,b,c,d, ...rest] = input;
-    console.log(a,b,c,d);
 
     for (let i = 0; i < input.length; i += 4) {
         
@@ -43,18 +42,14 @@ function runIntCode(input, noun, verb) {
 
 function findNounVerb(match){
 
-    for (let i = 0; i < 13; i++) {
-        for (let j = 0; j < 4; j++) {
+    for (let i = 0; i < 100; i++) {
+        for (let j = 0; j < 100; j++) {
             let output = runIntCode(input, i, j);
-            console.log("output:", output);
-           // if (output == match) return { i, j };
+            if (output == match) return 100* i+ j;
           
         }
     }
 }
 
-//console.log(findNounVerb(5866663));
+console.log(findNounVerb(19690720));
 
-
-
-console.log(runIntCode(input,12,3));
