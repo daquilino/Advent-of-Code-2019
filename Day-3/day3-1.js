@@ -4,7 +4,11 @@
     3. determine which wire 'cross' is closest to origin (starting point);
 */
 
+const FS = require('fs');
 
+let wires = FS.readFileSync("input.txt", "utf8").split("\r");
+let wire1 = wires[0].split(",");
+let wire2 = wires[1].split(",");
 
 function makePoints(dirs) {
 
@@ -83,10 +87,12 @@ function findShortestDistance(wire1,wire2){
     let wire2Points = makePoints(wire2);
 
     let junctions = findJuntions(wire1Points, wire2Points);
-    
-    let manDistances = junctions.map(manDistFromOrigin);
 
-    return Math.min(...manDistances);
+    console.log("#junctions", junctions.length)
+    
+    //let manDistances = junctions.map(manDistFromOrigin);
+
+    //return Math.min(...manDistances);
 
 }
 
