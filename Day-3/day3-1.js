@@ -87,12 +87,10 @@ function findShortestDistance(wire1,wire2){
     let wire2Points = makePoints(wire2);
 
     let junctions = findJuntions(wire1Points, wire2Points);
-
-    console.log("#junctions", junctions.length)
     
-    //let manDistances = junctions.map(manDistFromOrigin);
+    let manDistances = junctions.map(manDistFromOrigin);
 
-    //return Math.min(...manDistances);
+    return Math.min(...manDistances);
 
 }
 
