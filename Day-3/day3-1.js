@@ -1,17 +1,10 @@
-/*
+/*  Pseudo code
     1. convert the wire paths to point coordinates (x,y values)
     2. compare the points to determine where the wires cross (they share the same point);
     3. determine which wire 'cross' is closest to origin (starting point);
-
-
 */
 
 
-
-//let wire1Points = makePoints(wire1);
-let wire2Points = []
-
-let currentPosition = { x: 0, y: 0 };
 
 function makePoints(dirs) {
 
@@ -101,10 +94,6 @@ function findShortestDistance(wire1,wire2){
 
 // test code below
 
-//test examples
-//let wire1 = ["R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"];
-//let wire2 = ["U62", "R66", "U55", "R34", "D71", "R55", "D58", "R83"];
-
 //let wire1Points = makePoints(wire1);
 //console.log(wire1Points);
 
@@ -117,4 +106,8 @@ function findShortestDistance(wire1,wire2){
 
 //console.log(manDistFromOrigin({x:6, y:6}));
 
+
+//test examples
+let wire1 = ["R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"];
+let wire2 = ["U62", "R66", "U55", "R34", "D71", "R55", "D58", "R83"];
 console.log(findShortestDistance(wire1, wire2));
