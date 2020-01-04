@@ -71,6 +71,8 @@ function findJuntions(wire1, wire2){
         }
     })
 
+    return junctions;
+
 }
 
 
@@ -78,3 +80,9 @@ function findJuntions(wire1, wire2){
 
 //let wire1Points = makePoints(wire1);
 //console.log(wire1Points);
+
+let a = [{x:2, y:3}];
+let b = [{x:1, y:2}, {x:1, y:3}, {x:2, y:3},{x:4, y:2}];
+
+let test = findJuntions(a,b);
+console.log(test);
