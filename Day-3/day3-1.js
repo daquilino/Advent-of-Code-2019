@@ -75,6 +75,18 @@ function findJuntions(wire1, wire2){
 
 }
 
+function manDistFromOrigin(point){
+
+    //reg distance = sqrt((x2-x1)^2 + (y2-y1)^2);
+    // since first point is oring (0,0);
+    // we can simplfy sqrt((x2)^2 + (y2)^2)
+
+    // we multiply result by 2/sqrt(2) to get manhattan distanse
+    // Then round.
+
+
+    return Math.round((Math.sqrt(Math.pow(point.x,2) + Math.pow(point.y,2))*2)/Math.sqrt(2));
+}
 
 
 // test code below 
@@ -82,8 +94,11 @@ function findJuntions(wire1, wire2){
 //let wire1Points = makePoints(wire1);
 //console.log(wire1Points);
 
-let a = [{x:2, y:3}];
-let b = [{x:1, y:2}, {x:1, y:3}, {x:2, y:3},{x:4, y:2}];
+// test findJunctions
+    //let a = [{x:2, y:3}];
+    //let b = [{x:1, y:2}, {x:1, y:3}, {x:2, y:3},{x:4, y:2}];
 
-let test = findJuntions(a,b);
-console.log(test);
+    //let test = findJuntions(a,b);
+    //console.log(test);
+
+console.log(manDistFromOrigin({x:6, y:6}));
