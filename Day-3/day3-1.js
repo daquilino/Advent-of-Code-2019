@@ -6,9 +6,7 @@
 
 */
 
-//test examples
-let wire1 = ["R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"];
-let wire2 = ["U62", "R66", "U55", "R34", "D71", "R55", "D58", "R83"];
+
 
 //let wire1Points = makePoints(wire1);
 let wire2Points = []
@@ -77,19 +75,35 @@ function findJuntions(wire1, wire2){
 
 function manDistFromOrigin(point){
 
-    //reg distance = sqrt((x2-x1)^2 + (y2-y1)^2);
-    // since first point is oring (0,0);
-    // we can simplfy sqrt((x2)^2 + (y2)^2)
+    //http://jwilson.coe.uga.edu/MATH7200/TaxiCab/TaxiCab.html
+    //distance = abs(x2-x1)+ abs(y2-y1);
+    // since first point, (x1,y1), is the origin (0,0);
+    // we can simplfy abs(x2) + abs(y2)
 
-    // we multiply result by 2/sqrt(2) to get manhattan distanse
-    // Then round.
-
-
-    return Math.round((Math.sqrt(Math.pow(point.x,2) + Math.pow(point.y,2))*2)/Math.sqrt(2));
+    return Math.abs(point.x) + Math.abs(point.y);
 }
 
 
-// test code below 
+function findShortestDistance(wire1,wire2){
+
+    let wire1Points = makePoints(wire1);
+    let wire2Points = makePoints(wire2);
+
+    let junctions = findJuntions(wire1Points, wire2Points);
+    
+    let manDistances = junctions.map(manDistFromOrigin);
+
+    return Math.min(...manDistances);
+
+}
+
+
+
+// test code below
+
+//test examples
+//let wire1 = ["R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"];
+//let wire2 = ["U62", "R66", "U55", "R34", "D71", "R55", "D58", "R83"];
 
 //let wire1Points = makePoints(wire1);
 //console.log(wire1Points);
@@ -101,4 +115,6 @@ function manDistFromOrigin(point){
     //let test = findJuntions(a,b);
     //console.log(test);
 
-console.log(manDistFromOrigin({x:6, y:6}));
+//console.log(manDistFromOrigin({x:6, y:6}));
+
+console.log(findShortestDistance(wire1, wire2));
