@@ -77,6 +77,7 @@ function findJuntions(wire1, wire2){
 
 
 
+// test code below 
 
 //let wire1Points = makePoints(wire1);
 //console.log(wire1Points);
