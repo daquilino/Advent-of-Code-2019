@@ -90,24 +90,4 @@ function findShortestDistance(wire1,wire2){
 
 }
 
-
-
-// test code below
-
-//let wire1Points = makePoints(wire1);
-//console.log(wire1Points);
-
-// test findJunctions
-    //let a = [{x:2, y:3}];
-    //let b = [{x:1, y:2}, {x:1, y:3}, {x:2, y:3},{x:4, y:2}];
-
-    //let test = findJuntions(a,b);
-    //console.log(test);
-
-//console.log(manDistFromOrigin({x:6, y:6}));
-
-
-//test examples
-let wire1 = ["R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"];
-let wire2 = ["U62", "R66", "U55", "R34", "D71", "R55", "D58", "R83"];
 console.log(findShortestDistance(wire1, wire2));
