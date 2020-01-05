@@ -13,7 +13,7 @@ let wire2 = wires[1].split(",");
 function makePoints(dirs) {
 
     let currentPosition = { x: 0, y: 0 };
-    let points = []
+    let points = new Set()
 
     for (let i = 0; i < dirs.length; i++) {
         let dir = dirs[i].slice(0, 1);
@@ -23,25 +23,25 @@ function makePoints(dirs) {
             case "R":
                 // start j at 1 not 0 to remove counting starting positions every time (duplicates).
                 for(let j = 1; j <= steps; j++){
-                    points.push({x:currentPosition.x + j, y: currentPosition.y})
+                    points.add(JSON.stringify({x:currentPosition.x + j, y: currentPosition.y}))
                 }
                 currentPosition.x += steps;
                 break;
             case "U":
                 for(let j = 1; j <= steps; j++){
-                    points.push({x:currentPosition.x, y: currentPosition.y + j})
+                    points.add(JSON.stringify({x:currentPosition.x, y: currentPosition.y + j}))
                 }
                 currentPosition.y += steps;
                 break;
             case "D":
                 for(let j = 1; j <= steps; j++){
-                    points.push({x:currentPosition.x, y: currentPosition.y - j})
+                    points.add(JSON.stringify({x:currentPosition.x, y: currentPosition.y - j}))
                 }
                 currentPosition.y -= steps;
                 break;
             case "L":
                 for(let j = 1; j <= steps; j++){
-                    points.push({x:currentPosition.x - j, y: currentPosition.y})
+                    points.add(JSON.stringify({x:currentPosition.x - j, y: currentPosition.y}))
                 }
                 currentPosition.x -= steps;
                 break;
@@ -52,7 +52,7 @@ function makePoints(dirs) {
 }
 
 
-//given two arrays of points, returns an array containing all junctions.
+//given two sets of JSON.stringified points, returns an array containing all junctions.
 // A junction is a point shared by both arrays.
 function findJuntions(wire1, wire2){
 
@@ -86,11 +86,12 @@ function findShortestDistance(wire1,wire2){
     let wire1Points = makePoints(wire1);
     let wire2Points = makePoints(wire2);
 
-    let junctions = findJuntions(wire1Points, wire2Points);
-    
-    let manDistances = junctions.map(manDistFromOrigin);
 
-    return Math.min(...manDistances);
+    //let junctions = findJuntions(wire1Points, wire2Points);
+    
+    //let manDistances = junctions.map(manDistFromOrigin);
+
+    //return Math.min(...manDistances);
 
 }
 
