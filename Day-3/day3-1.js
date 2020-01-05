@@ -98,4 +98,4 @@ function findShortestDistance(wire1,wire2){
     return Math.min(...manDistances);
 }
 
-console.log(findShortestDistance(wire1, wire2));
+console.log("Shortest Manhattan Distance:", findShortestDistance(wire1, wire2));
