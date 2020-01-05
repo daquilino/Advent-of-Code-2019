@@ -56,13 +56,11 @@ function makePoints(dirs) {
 // A junction is a point shared by both arrays.
 function findJuntions(wire1, wire2){
 
-    let junctions = wire1.filter(point=>{
-
-        for(let i  = 0;i<wire2.length; i++){
-
-            if( (point.x == wire2[i].x) && (point.y == wire2[i].y)){
-                return true;
-            }
+    let junctions = []; 
+    
+    wire1.forEach(point=>{
+        if(wire2.has(point)){
+            junctions.push(JSON.parse(point));
         }
     })
 
