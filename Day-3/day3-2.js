@@ -22,35 +22,55 @@ let wire2 = wires[1].split(",");
 function makePoints(dirs) {
 
     let currentPosition = { x: 0, y: 0 };
-    let points = new Set()
+    let points = new Map()
+    let stepsFromOrigin = 0;
 
     for (let i = 0; i < dirs.length; i++) {
         let dir = dirs[i].slice(0, 1);
         let steps = parseInt(dirs[i].slice(1))
 
+
         switch (dir) {
             case "R":
                 // start j at 1 not 0 to remove counting starting positions every time (duplicates).
                 for(let j = 1; j <= steps; j++){
-                    points.add(JSON.stringify({x:currentPosition.x + j, y: currentPosition.y}))
+
+                    let currentPoint = JSON.stringify({x:currentPosition.x + j, y: currentPosition.y});
+                    stepsFromOrigin += 1;
+                    if(!points.has(currentPoint)){
+                        points.set(currentPoint, stepsFromOrigin);
+                    }
+                   
                 }
                 currentPosition.x += steps;
                 break;
             case "U":
                 for(let j = 1; j <= steps; j++){
-                    points.add(JSON.stringify({x:currentPosition.x, y: currentPosition.y + j}))
+                    let currentPoint = JSON.stringify({x:currentPosition.x + j, y: currentPosition.y});
+                    stepsFromOrigin += 1;
+                    if(!points.has(currentPoint)){
+                        points.set(currentPoint, stepsFromOrigin);
+                    }
                 }
                 currentPosition.y += steps;
                 break;
             case "D":
                 for(let j = 1; j <= steps; j++){
-                    points.add(JSON.stringify({x:currentPosition.x, y: currentPosition.y - j}))
+                    let currentPoint = JSON.stringify({x:currentPosition.x + j, y: currentPosition.y});
+                    stepsFromOrigin += 1;
+                    if(!points.has(currentPoint)){
+                        points.set(currentPoint, stepsFromOrigin);
+                    }
                 }
                 currentPosition.y -= steps;
                 break;
             case "L":
                 for(let j = 1; j <= steps; j++){
-                    points.add(JSON.stringify({x:currentPosition.x - j, y: currentPosition.y}))
+                    let currentPoint = JSON.stringify({x:currentPosition.x + j, y: currentPosition.y});
+                    stepsFromOrigin += 1;
+                    if(!points.has(currentPoint)){
+                        points.set(currentPoint, stepsFromOrigin);
+                    }
                 }
                 currentPosition.x -= steps;
                 break;
