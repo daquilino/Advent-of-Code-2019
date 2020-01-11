@@ -18,7 +18,8 @@ let wire1 = wires[0].split(",");
 let wire2 = wires[1].split(",");
 
 
-// Traces wire and returns a Set of JSON.stringified point objects it crosses.
+// Traces wire and determines each point the wire crosses as well as the number of steps each point is from the origin.
+// This is stored in a Map (the point as the key and steps as the value), which is returned.
 function makePoints(dirs) {
 
     let currentPosition = { x: 0, y: 0 };
