@@ -18,6 +18,7 @@ let wire1 = wires[0].split(",");
 let wire2 = wires[1].split(",");
 
 
+// Given an array of directions.
 // Traces wire and determines each point the wire crosses as well as the number of steps each point is from the origin.
 // This is stored in a Map (the point as the key and steps as the value), which is returned.
 function makePoints(dirs) {
@@ -30,13 +31,14 @@ function makePoints(dirs) {
         let dir = dirs[i].slice(0, 1);
         let steps = parseInt(dirs[i].slice(1))
 
-
         switch (dir) {
             case "R":
                 // start j at 1 not 0 to remove counting starting positions every time (duplicates).
                 for(let j = 1; j <= steps; j++){
 
                     let currentPoint = JSON.stringify({x:currentPosition.x + j, y: currentPosition.y});
+                    console.log("currntPoint", currentPoint)
+
                     stepsFromOrigin += 1;
                     if(!points.has(currentPoint)){
                         points.set(currentPoint, stepsFromOrigin);
@@ -124,4 +126,6 @@ function findShortestDistance(wire1,wire2){
     return Math.min(...manDistances);
 }
 
-console.log("Shortest Manhattan Distance:", findShortestDistance(wire1, wire2));
+//console.log("Shortest Manhattan Distance:", findShortestDistance(wire1, wire2));
+
+console.log(makePoints(["R9,U4,L5,U2,R4,U6"]))
