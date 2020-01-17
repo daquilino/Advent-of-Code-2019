@@ -37,7 +37,6 @@ function makePoints(dirs) {
                 for(let j = 1; j <= steps; j++){
 
                     let currentPoint = JSON.stringify({x:currentPosition.x + j, y: currentPosition.y});
-                    console.log("currntPoint", currentPoint)
 
                     stepsFromOrigin += 1;
                     if(!points.has(currentPoint)){
@@ -90,9 +89,9 @@ function findJuntions(wire1, wire2){
 
     let junctions = []; 
     
-    wire1.forEach(point=>{
-        if(wire2.has(point)){
-            junctions.push(JSON.parse(point));
+    wire1.forEach((val,key)=>{
+        if(wire2.has(key)){
+            junctions.push(JSON.parse(`{ '${key}' : ${val} }`));
         }
     })
 
@@ -128,4 +127,4 @@ function findShortestDistance(wire1,wire2){
 
 //console.log("Shortest Manhattan Distance:", findShortestDistance(wire1, wire2));
 
-console.log(makePoints(["R9,U4,L5,U2,R4,U6"]))
+//let mapPoints = makePoints(["R9,U4,L5,U2,R4,U6"]);
