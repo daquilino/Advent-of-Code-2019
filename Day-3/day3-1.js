@@ -94,7 +94,6 @@ function findShortestDistance(wire1,wire2){
     let wire1Points = makePoints(wire1);
     let wire2Points = makePoints(wire2);
 
-
     let junctions = findJuntions(wire1Points, wire2Points);
 
     let manDistances = junctions.map(manDistFromOrigin);
