@@ -83,15 +83,14 @@ function makePoints(dirs) {
 }
 
 
-//given two sets of JSON.stringified points, returns an array containing all junctions.
-// A junction is a point shared by both arrays.
+// Given two Map objects, find same keys and put in new map 
 function findJuntions(wire1, wire2){
 
-    let junctions = []; 
+    let junctions = new Map(); 
     
     wire1.forEach((val,key)=>{
         if(wire2.has(key)){
-            junctions.push(JSON.parse(`{ '${key}' : ${val} }`));
+            junctions.set(key,val);
         }
     })
 
@@ -116,15 +115,15 @@ function findShortestDistance(wire1,wire2){
 
     let wire1Points = makePoints(wire1);
     let wire2Points = makePoints(wire2);
-
-
+    
     let junctions = findJuntions(wire1Points, wire2Points);
 
-    let manDistances = junctions.map(manDistFromOrigin);
+   // let manDistances = junctions.map(manDistFromOrigin);
 
-    return Math.min(...manDistances);
+   // return Math.min(...manDistances);
 }
 
 //console.log("Shortest Manhattan Distance:", findShortestDistance(wire1, wire2));
 
-//let mapPoints = makePoints(["R9,U4,L5,U2,R4,U6"]);
+let mapPoints = makePoints(["R9,U4,L5,U2,R4,U6"]);
+console.log(mapPoints)
