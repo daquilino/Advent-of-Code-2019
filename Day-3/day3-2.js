@@ -83,7 +83,9 @@ function makePoints(dirs) {
 }
 
 
-// Given two Map objects, find same keys and put in new map 
+// Given two Map objects containing each wires points and steps to those points,
+// find where those wires intersect (are contained in both Maps).
+// Return a new map with those intersections and total steps (sum the steps from both wires). 
 function findJuntions(wire1, wire2){
 
     let junctions = new Map(); 
@@ -110,6 +112,14 @@ function manDistFromOrigin(point){
     return Math.abs(point.x) + Math.abs(point.y);
 }
 
+function findMinSteps(junctions){
+    let minSteps = 0;
+
+
+    return minSteps;
+
+}
+
 
 function findShortestDistance(wire1,wire2){
 
@@ -118,12 +128,28 @@ function findShortestDistance(wire1,wire2){
     
     let junctions = findJuntions(wire1Points, wire2Points);
 
-   // let manDistances = junctions.map(manDistFromOrigin);
+    console.log("# of junctions", junctions.size)
 
-   // return Math.min(...manDistances);
+   return findMinSteps(junctions)
 }
 
 //console.log("Shortest Manhattan Distance:", findShortestDistance(wire1, wire2));
 
-let mapPoints = makePoints(["R9,U4,L5,U2,R4,U6"]);
-console.log(mapPoints)
+//let mapPoints = makePoints(["R9,U4,L5,U2,R4,U6"]);
+//console.log(mapPoints)
+
+
+/* Test examples from AOC instructions
+Here are the best steps for the extra examples from above:
+
+R75,D30,R83,U83,L12,D49,R71,U7,L72
+U62,R66,U55,R34,D71,R55,D58,R83 = 610 steps
+
+R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51
+U98,R91,D20,R16,D67,R40,U7,R15,U6,R7 = 410 steps
+*/
+
+let test1 = "R75,D30,R83,U83,L12,D49,R71,U7,L72".split(",")
+let test2 = "U62,R66,U55,R34,D71,R55,D58,R83".split(",")
+
+console.log("Shortest Manhattan Distance:", findShortestDistance(test1, test2));
