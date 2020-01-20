@@ -121,6 +121,7 @@ function findMinSteps(junctions){
     let iterations = 0;   // used to assign first Map value to minSteps
 
     junctions.forEach(function(val){
+        console.log("minSteps:", minSteps);
 
         // This assignes a starting value to minSteps.    
         if(iterations == 0){
@@ -129,6 +130,8 @@ function findMinSteps(junctions){
         else if(val < minSteps){
             minSteps = val;
         }
+
+        iterations++;
     
     })
     return minSteps;
