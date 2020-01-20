@@ -91,8 +91,11 @@ function findJuntions(wire1, wire2){
     let junctions = new Map(); 
     
     wire1.forEach((val,key)=>{
-        if(wire2.has(key)){
-            junctions.set(key,val);
+        
+        let wire2Steps = wire2.get(key);
+
+        if(wire2Steps){
+            junctions.set(key,val + wire2Steps);
         }
     })
 
