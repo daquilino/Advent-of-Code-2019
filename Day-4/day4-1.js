@@ -14,3 +14,19 @@ function hasTwoAdj(num){
 
     return (matches.length == 1) ? true : false;
 }
+
+
+// This works, but only for increasing numbers
+// I NEED TO MAKE IT SO SAME NUMBER IS ACCEPTABLE;
+function sixDigitInc(num){
+    let matches = num.toString().match(/^(?=\d{6}$)0?1?2?3?4?5?6?7?8?9?$/g);
+
+    console.log("matches:", matches);
+
+    if(!matches) return false;  // mathces is null return false
+
+    return (matches.length == 1) ? true : false;
+
+
+}
+
