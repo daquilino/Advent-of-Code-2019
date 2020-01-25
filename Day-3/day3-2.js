@@ -27,15 +27,18 @@ function makePoints(dirs) {
     let points = new Map()
     let stepsFromOrigin = 0;
 
+
+
     for (let i = 0; i < dirs.length; i++) {
         let dir = dirs[i].slice(0, 1);
         let steps = parseInt(dirs[i].slice(1))
 
         switch (dir) {
             case "R":
+              
                 // start j at 1 not 0 to remove counting starting positions every time (duplicates).
                 for(let j = 1; j <= steps; j++){
-
+                   
                     let currentPoint = JSON.stringify({x:currentPosition.x + j, y: currentPosition.y});
 
                     stepsFromOrigin += 1;
@@ -47,8 +50,9 @@ function makePoints(dirs) {
                 currentPosition.x += steps;
                 break;
             case "U":
-                for(let j = 1; j <= steps; j++){
-                    let currentPoint = JSON.stringify({x:currentPosition.x + j, y: currentPosition.y});
+                
+                for(let j = 1; j <= steps; j++){              
+                    let currentPoint = JSON.stringify({x:currentPosition.x, y: currentPosition.y + j});
                     stepsFromOrigin += 1;
                     if(!points.has(currentPoint)){
                         points.set(currentPoint, stepsFromOrigin);
@@ -57,8 +61,9 @@ function makePoints(dirs) {
                 currentPosition.y += steps;
                 break;
             case "D":
-                for(let j = 1; j <= steps; j++){
-                    let currentPoint = JSON.stringify({x:currentPosition.x + j, y: currentPosition.y});
+               
+                for(let j = 1; j <= steps; j++){           
+                    let currentPoint = JSON.stringify({x:currentPosition.x, y: currentPosition.y - j});
                     stepsFromOrigin += 1;
                     if(!points.has(currentPoint)){
                         points.set(currentPoint, stepsFromOrigin);
@@ -67,8 +72,9 @@ function makePoints(dirs) {
                 currentPosition.y -= steps;
                 break;
             case "L":
-                for(let j = 1; j <= steps; j++){
-                    let currentPoint = JSON.stringify({x:currentPosition.x + j, y: currentPosition.y});
+                
+                for(let j = 1; j <= steps; j++){              
+                    let currentPoint = JSON.stringify({x:currentPosition.x - j, y: currentPosition.y});
                     stepsFromOrigin += 1;
                     if(!points.has(currentPoint)){
                         points.set(currentPoint, stepsFromOrigin);
@@ -78,7 +84,7 @@ function makePoints(dirs) {
                 break;
         }
     }
-
+  
     return points; //returns an array of points
 }
 
@@ -95,6 +101,8 @@ function findJuntions(wire1, wire2){
         let wire2Steps = wire2.get(key);
 
         if(wire2Steps){
+            // console.log(`wire1 ${key}:${val}   wire2  ${wire2Steps} `)
+
             junctions.set(key,val + wire2Steps);
         }
     })
@@ -103,25 +111,13 @@ function findJuntions(wire1, wire2){
 
 }
 
-
-// Computes Manhattan Distance between point and origin.
-function manDistFromOrigin(point){
-
-    //http://jwilson.coe.uga.edu/MATH7200/TaxiCab/TaxiCab.html
-    //distance = abs(x2-x1)+ abs(y2-y1);
-    // since first point, (x1,y1), is the origin (0,0);
-    // we can simplfy abs(x2) + abs(y2)
-
-    return Math.abs(point.x) + Math.abs(point.y);
-}
-
 function findMinSteps(junctions){
     
     let minSteps;
     let iterations = 0;   // used to assign first Map value to minSteps
 
     junctions.forEach(function(val){
-        console.log("minSteps:", minSteps);
+       // console.log("minSteps:", minSteps);
 
         // This assignes a starting value to minSteps.    
         if(iterations == 0){
@@ -151,10 +147,7 @@ function findShortestDistance(wire1,wire2){
    return findMinSteps(junctions)
 }
 
-//console.log("Shortest Manhattan Distance:", findShortestDistance(wire1, wire2));
-
-//let mapPoints = makePoints(["R9,U4,L5,U2,R4,U6"]);
-//console.log(mapPoints)
+console.log("fewest combined steps:", findShortestDistance(wire1, wire2));
 
 
 /* Test examples from AOC instructions
@@ -167,8 +160,11 @@ R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51
 U98,R91,D20,R16,D67,R40,U7,R15,U6,R7 = 410 steps
 */
 
- let test1 = "R75,D30,R83,U83,L12,D49,R71,U7,L72".split(",")
- let test2 = "U62,R66,U55,R34,D71,R55,D58,R83".split(",")
+//  let test1 = "R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51".split(",")
+//  let test2 = "U98,R91,D20,R16,D67,R40,U7,R15,U6,R7".split(",")
 
- console.log("Shortest Manhattan Distance:", findShortestDistance(test1, test2));
+// console.log("Shortest Manhattan Distance:", findShortestDistance(test1, test2));
+
+
+
 
