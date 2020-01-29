@@ -18,4 +18,11 @@ for (let i = STARTRANGE; i <= ENDRANGE; i++){
 
 function numTest(num){
 
+    /* checks
+       1. digits never decrease (they increase or are equal)
+       2. two adjacent digits are the same. (only two ?)
+
+    */
+
+
 }
