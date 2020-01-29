@@ -6,3 +6,16 @@
 
 */
 
+const STARTRANGE = 240298;
+const ENDRANGE = 784956;
+
+for (let i = STARTRANGE; i <= ENDRANGE; i++){
+
+
+
+
+}
+
+function numTest(num){
+
+}
