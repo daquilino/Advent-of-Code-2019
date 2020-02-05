@@ -16,7 +16,7 @@ function numTest(num){
 
     /* checks
        1. digits never decrease (they increase or are equal)
-       2. two adjacent digits are the same. (only two ?)
+       2. two adjacent digits are the same. (111111 passes, so more than two can be same)
     */
 
    num = num.toString().split("").map(e=>parseInt(e));
