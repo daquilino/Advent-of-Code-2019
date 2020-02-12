@@ -9,14 +9,16 @@ const STARTRANGE = 240298;
 const ENDRANGE = 784956;
 let nums = 0;
 
+function main() {
 
-for (let i = STARTRANGE; i <= ENDRANGE; i++) {
+   for (let i = STARTRANGE; i <= ENDRANGE; i++) {
+      if (numCheck(i)) nums++
+   }
 
-   if (numCheck(i)) nums++
-
+   console.log("number of matches:", nums);
 }
 
-console.log("number of matches:", nums);
+
 
 function numCheck(num) {
 
@@ -36,8 +38,8 @@ function numCheck(num) {
 
       let a = num[i];
       let b = num[i + 1];
-   
-      
+
+
       // return false if digits decrease;
       if (b < a) return false;
       if (a == b) hasTwoAdj = true;
@@ -49,3 +51,4 @@ function numCheck(num) {
 }
 
 
+main();
