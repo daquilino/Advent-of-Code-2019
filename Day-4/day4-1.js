@@ -7,31 +7,45 @@
 
 const STARTRANGE = 240298;
 const ENDRANGE = 784956;
+let nums = 0;
 
-for (let i = STARTRANGE; i <= ENDRANGE; i++){
+
+for (let i = STARTRANGE; i <= ENDRANGE; i++) {
+
+   if (numCheck(i)) nums++
 
 }
 
-function numTest(num){
+console.log("number of matches:", nums);
 
-    /* checks
-       1. digits never decrease (they increase or are equal)
-       2. two adjacent digits are the same. (111111 passes, so more than two can be same)
-    */
+function numCheck(num) {
 
-   num = num.toString().split("").map(e=>parseInt(e));
+   /* checks
+      1. digits never decrease (they increase or are equal)
+      2. two adjacent digits are the same. (111111 passes, so more than two can be same)
+   */
 
-   for(let i = 0; i < num.length -1; i++ ){
-        let a = num[i];
-        let b  = num[i+1];
-        console.log("b",b, "a", a);
-        // return false if digits decrease;
-        if (b < a) return false; 
-    
+   let hasTwoAdj = false
+
+
+   // converts number to array of numbers  
+   num = num.toString().split("").map(e => parseInt(e));
+
+   for (let i = 0; i < num.length - 1; i++) {
+
+
+      let a = num[i];
+      let b = num[i + 1];
+   
+      
+      // return false if digits decrease;
+      if (b < a) return false;
+      if (a == b) hasTwoAdj = true;
    }
 
-   return true;
+   if (hasTwoAdj) return num.join("");
+
+   return false
 }
 
 
-console.log(numTest(123476))
