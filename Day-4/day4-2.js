@@ -9,6 +9,7 @@ const STARTRANGE = 240298;
 const ENDRANGE = 784956;
 let nums = 0;
 
+//Iterate though input, checking if number passes requirements
 function main() {
 
    for (let i = STARTRANGE; i <= ENDRANGE; i++) {
@@ -19,35 +20,10 @@ function main() {
 }
 
 
-
+//Checks number for requirements, returns true or false
 function numCheck(num) {
 
-   /* checks
-      1. digits never decrease (they increase or are equal)
-      2. Must contain at least one set of only two adjacent digits. (111122 works since '2' repeats only twice)
-            Test Cases:
-            112233 pass
-            111122 pass
-            111145 fail
-            123444 fail
-            244444 fail
-            244445 fail
-            244446 fail
-            244447 fail
-            244448 fail
-            244449 fail
-            244455 pass
-
-
-            if two numbers match hasTwoAdj true
-            on next pass if a != b  set onlyTowAdj flag true
-                else hasTowajd if set to false
-
-            dont enter loop if both are true (we already passed that test)
-    */
-
-   let hasTwoAdj = false;
-   let onlyTwoAdj = false;
+   let good = false; //flag if number conatines at least one set
 
    // converts number to array of numbers  
    num = num.toString().split("").map(e => parseInt(e));
@@ -60,9 +36,18 @@ function numCheck(num) {
       // return false if digits decrease;
       if (b < a) return false;
 
-   } 
+      // only check if we have not yet found a set of numbers
+      if (!good) {
+         if (a == b) {
+            // if we have a matching set, we check if number before or number after is the same
+            // if not our set is only two numbers wich passes test.
+            if ((a != num[i - 1]) && (a != num[i + 2])) good = true;
+         }
+      }
 
-   if (hasTwoAdj && onlyTwoAdj) return true;
+   }
+
+   if (good) return true;
    return false
 }
 
