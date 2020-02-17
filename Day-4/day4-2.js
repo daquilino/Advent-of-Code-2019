@@ -30,6 +30,13 @@ function numCheck(num) {
             111122 pass
             111145 fail
             123444 fail
+            244444 fail
+            244445 fail
+            244446 fail
+            244447 fail
+            244448 fail
+            244449 fail
+            244455 pass
 
 
             if two numbers match hasTwoAdj true
@@ -40,7 +47,7 @@ function numCheck(num) {
     */
 
    let hasTwoAdj = false;
-   let onlyTwoAdj = false; 
+   let onlyTwoAdj = false;
 
    // converts number to array of numbers  
    num = num.toString().split("").map(e => parseInt(e));
@@ -52,19 +59,10 @@ function numCheck(num) {
 
       // return false if digits decrease;
       if (b < a) return false;
-     
-      if (a == b && !(hasTwoAdj && onlyTwoAdj)){
-        if(hasTwoAdj) onlyTwoAdj = false;    
-        hasTwoAdj = true;       
-      }
-      else if(hasTwoAdj){
-          onlyTwoAdj = true
-      }
-     
-   }
+
+   } 
 
    if (hasTwoAdj && onlyTwoAdj) return true;
-
    return false
 }
 
